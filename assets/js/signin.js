@@ -19,6 +19,7 @@ httpSendAsync(serverUrl, "GET", [], function callback(responseText, status) {
     }
     // Success login
     console.log("Request Success");
+    window.location.replace("./home/");
   });
 });
 
@@ -37,5 +38,6 @@ function loginButtonPress() {
     // Success
     console.log("Login Success: " + responseText);
     setCookie("token", responseText, 365*10);
+    window.location.replace("./home/");
   });
 }
