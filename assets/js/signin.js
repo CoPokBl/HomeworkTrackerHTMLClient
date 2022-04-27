@@ -1,6 +1,5 @@
 
 // Check server status
-console.log(serverUrl);
 httpSendAsync(serverUrl, "GET", [], function callback(responseText, status) {
   if (status != 200) {
     // Failed
