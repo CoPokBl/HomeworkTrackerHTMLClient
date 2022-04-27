@@ -1,7 +1,7 @@
 
 // Check server status
 httpSendAsync(serverUrl, "GET", [], function callback(responseText, status) {
-  if (status != 200) {
+  if (String(status)[0] != 2) {
     // Failed
     console.log("Server offline");
     window.location.replace("./serveroff/");
@@ -11,7 +11,7 @@ httpSendAsync(serverUrl, "GET", [], function callback(responseText, status) {
   // Check for login
   var token = getCookie("token");
   httpSendAsync(serverUrl + "/api/tasks", "GET", ["Authorization:Bearer " + token], function callback(responseText, status) {
-    if (status != 200) {
+    if (String(status)[0] != 2) {
       // Failed
       console.log("Request Failed");
       return;
@@ -29,7 +29,7 @@ function loginButtonPress() {
 
   // Login
   httpSendAsync(serverUrl + "/auth", "GET", [header], function callback(responseText, status) {
-    if (status != 200) {
+    if (String(status)[0] != 2) {
       // Failed
       console.log("Login Failed");
       return;
