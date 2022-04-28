@@ -1,5 +1,6 @@
 
-httpSendAsync(serverUrl + "/api/tasks", "GET", ["Authorization:Bearer " + getCookie("token")], function callback(responseText, status) {
+httpSendAsync(serverUrl + "/api/tasks", "GET", ["Authorization:Bearer " + getCookie("token")], null, function callback(responseText, status) {
+  let rgb;
   if (String(status)[0] != 2) {
     // Failed
     document.getElementById('tasks').innerHTML = "Loading tasks failed!";
@@ -10,21 +11,21 @@ httpSendAsync(serverUrl + "/api/tasks", "GET", ["Authorization:Bearer " + getCoo
   document.getElementById('tasks').innerHTML = "Tasks: <br>" + responseText;
 
   // display tasks in blocks
-  var totalText = "<br>";  // Starting wrappers
-  var tasks = JSON.parse(responseText);
+  let totalText = "<br>";  // Starting wrappers
+  const tasks = JSON.parse(responseText);
   console.log(tasks.length);
   for (var i = 0; i < tasks.length; i++) {
-    var cTask = tasks[i];
-    var blockText = '<div class="col-sm-6 col-lg-10 mb-4"><div class="card"><div class="card-body">';
-    var classColour = "black";
-    var typeColour = "black";
+    const cTask = tasks[i];
+    let blockText = '<div class="col-sm-6 col-lg-10 mb-4"><div class="card"><div class="card-body">';
+    let classColour = "black";
+    let typeColour = "black";
 
     if (cTask.classColour != "-1.-1.-1") {
-      var rgb = cTask.classColour.split('.');
+      rgb = cTask.classColour.split('.');
       classColour = "rgb(" + rgb[0] + ", " + rgb[1] + ", " + rgb[2] + ")"
     }
     if (cTask.typeColour != "-1.-1.-1") {
-      var rgb = cTask.typeColour.split('.');
+      rgb = cTask.typeColour.split('.');
       typeColour = "rgb(" + rgb[0] + ", " + rgb[1] + ", " + rgb[2] + ")"
     }
 
@@ -51,7 +52,7 @@ function logout() {
 }
 
 function deleteTask(id) {
-  httpSendAsync(serverUrl + "/api/tasks/" + id, "DELETE", ["Authorization:Bearer " + getCookie("token")], function callback(responseText, status) {
+  httpSendAsync(serverUrl + "/api/tasks/" + id, "DELETE", ["Authorization:Bearer " + getCookie("token")], null, function callback(responseText, status) {
     if (String(status)[0] != 2) {
       // Failed
       console.log("Failed to delete task with id " + id + " (Error: " + status + " " + responseText + ")");

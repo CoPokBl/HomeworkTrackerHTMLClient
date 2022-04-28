@@ -10,31 +10,35 @@
     <!-- Imports -->
     <link href="../../assets/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../assets/css/signin.css" rel="stylesheet">
-    <script type="text/javascript" src="../../assets/js/global.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="../../assets/js/addtask.js" crossorigin="anonymous"></script>
 
   </head>
   <body class="text-center">
     <div class="form-signin"> <!-- Actual content -->
-      <h1 id="title">New Task</h1>
-      <p>Class: <input type="text" id="inputClass" class="form-control" placeholder="Math" autofocus></p>
-      <p>Type: <input type="text" id="inputType" class="form-control" placeholder="Overdue Classwork"></p>
-      <p>Task: <textarea class="form-control" id="inputTask" rows="4" placeholder="Complete questions 1-5 from chapter 3 in the textbook"></textarea></p>
+      <h1 id='pageHeading'>New Task</h1>
+
+      <label for="inputClass">Class:</label>
+      <input type="text" id="inputClass" class="form-control" placeholder="Math" autofocus>
+      <input type="color" id="classColour" style="width: 300px">
+
+      <br>
+      <br>
+
+      <label for="inputType">Type:</label>
+      <input type="text" id="inputType" class="form-control" placeholder="Overdue Classwork">
+      <input type="color" id="typeColour" style="width: 300px">
+
+      <br>
+      <br>
+
+      <label for="inputTask">Task:</label>
+      <textarea class="form-control" id="inputTask" rows="4" placeholder="Complete questions 1-5 from chapter 3 in the textbook"></textarea>
+
+      <br>
+      <br>
+      <button type="button" class="btn btn-success" onclick="saveButtonClick();">Save</button>
+
     </div>
-    <!-- <div class="form-signin">
-    <img class="mb-4" src="./assets/css/bootstrap/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputUser" class="sr-only">Username</label>
-    <input type="text" id="inputUser" class="form-control" placeholder="Username" required autofocus>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
-    </div>
-    <button class="btn btn-lg btn-primary btn-block" onclick="loginButtonPress();">Sign in</button>
-    <p class="mt-5 mb-3 text-muted">&copy; 2022 CoPokBl</p>
-</div> -->
 </body>
+<script type="text/javascript" src="../../assets/js/global.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../../assets/js/addtask.js" crossorigin="anonymous"></script>
 </html>

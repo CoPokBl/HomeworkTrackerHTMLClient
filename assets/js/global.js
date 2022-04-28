@@ -2,8 +2,8 @@
 const serverUrl = "homeworktrack.serble.net:9898";
 
 // Functions
-function httpSendAsync(theUrl, verb, headers, callback) {
-  var xmlHttp = new XMLHttpRequest();
+function httpSendAsync(theUrl, verb, headers, body, callback) {
+  const xmlHttp = new XMLHttpRequest();
   xmlHttp.onreadystatechange = function() {
     if (xmlHttp.readyState != 4) {
       return;
@@ -14,7 +14,16 @@ function httpSendAsync(theUrl, verb, headers, callback) {
   headers.forEach((item, i) => {
     xmlHttp.setRequestHeader(item.split(":")[0],item.split(":")[1]);
   });
-  xmlHttp.send(null);
+  xmlHttp.send(body);
+}
+
+function hexToRgb(hex) {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16)
+  } : null;
 }
 
 function setCookie(cname, cvalue, exdays) {

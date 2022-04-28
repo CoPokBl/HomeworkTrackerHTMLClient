@@ -1,6 +1,6 @@
 
 // Check server status
-httpSendAsync(serverUrl, "GET", [], function callback(responseText, status) {
+httpSendAsync(serverUrl, "GET", [], null, function callback(responseText, status) {
   if (String(status)[0] != 2) {
     // Failed
     console.log("Server offline");
@@ -10,7 +10,7 @@ httpSendAsync(serverUrl, "GET", [], function callback(responseText, status) {
   console.log("Server online");
   // Check for login
   var token = getCookie("token");
-  httpSendAsync(serverUrl + "/api/tasks", "GET", ["Authorization:Bearer " + token], function callback(responseText, status) {
+  httpSendAsync(serverUrl + "/api/tasks", "GET", ["Authorization:Bearer " + token], null, function callback(responseText, status) {
     if (String(status)[0] != 2) {
       // Failed
       console.log("Request Failed");
@@ -28,7 +28,7 @@ function loginButtonPress() {
   var header = "Authorization:Basic " + window.btoa(username + ":" + password);
 
   // Login
-  httpSendAsync(serverUrl + "/auth", "GET", [header], function callback(responseText, status) {
+  httpSendAsync(serverUrl + "/auth", "GET", [header], null, function callback(responseText, status) {
     if (String(status)[0] != 2) {
       // Failed
       console.log("Login Failed");
