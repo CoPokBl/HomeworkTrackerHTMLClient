@@ -35,8 +35,8 @@ httpSendAsync(serverUrl + "/api/tasks", "GET", ["Authorization:Bearer " + getCoo
     blockText += "<p class='card-text'>Task: " + cTask.task + "</p>";
 
     // Button
-    blockText += '<button type="button" class="btn btn-danger" onclick="deleteTask(\'' + cTask.id + '\');">Delete Task</button>';
-    console.log('<button type="button" class="btn btn-danger" onclick="deleteTask(\'' + cTask.id + '\');">Delete Task</button>');
+    blockText += '<button type="button" class="btn btn-danger" onclick="deleteTask(\'' + cTask.id + '\');">Delete Task</button>  ';
+    blockText += '<button type="button" class="btn btn-secondary" onclick="editTask(\'' + cTask.id + '\');">Edit Task</button>';
 
     totalText += blockText + "</div></div></div>";
   }
@@ -61,4 +61,8 @@ function deleteTask(id) {
     // Success
     window.location.reload();
   });
+}
+
+function editTask(id) {
+  window.location.replace("./addtask?edit=true&edit_id=" + id);
 }

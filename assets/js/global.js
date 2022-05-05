@@ -26,6 +26,20 @@ function hexToRgb(hex) {
   } : null;
 }
 
+// rgb to hex
+function componentToHex(c) {
+  const hex = c.toString(16);
+  return hex.length == 1 ? "0" + hex : hex;
+}
+
+function rgbToHex(r, g, b) {
+  // convert r g and b to numbers
+  r = parseInt(r);
+  g = parseInt(g);
+  b = parseInt(b);
+  return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+}
+
 function setCookie(cname, cvalue, exdays) {
   const d = new Date();
   d.setTime(d.getTime() + (exdays*24*60*60*1000));

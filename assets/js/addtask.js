@@ -25,6 +25,22 @@ if (params.has('edit')) {
           document.getElementById('inputClass').value = task.class;
           document.getElementById('inputType').value = task.type;
           document.getElementById('inputTask').value = task.task;
+
+          // Colours
+          if (task.classColour !== "-1.-1.-1") {
+              let cSplits = task.classColour.split(".");
+              document.getElementById('classColour').value = rgbToHex(cSplits[0], cSplits[1], cSplits[2]);
+          } else {
+              document.getElementById('typeColour').value = rgbToHex(0,0,0);
+          }
+
+          if (task.typeColour !== "-1.-1.-1") {
+              let tSplits = task.typeColour.split(".");
+              document.getElementById('typeColour').value = rgbToHex(tSplits[0], tSplits[1], tSplits[2]);
+          } else {
+              document.getElementById('typeColour').value = rgbToHex(0,0,0);
+          }
+
     });
 
   }
@@ -58,16 +74,13 @@ function saveButtonClick() {
         ["Authorization:Bearer " + getCookie("token"), "Content-Type: application/json"],
         obj,
         function callback(responseText, status) {
-            // Set the fields
             if (String(status)[0] != 2) {
-                console.error("Failed to get data");
+                console.error("Failed to add task");
                 return;
             }
-            const task = JSON.parse(responseText);
-            document.getElementById('inputClass').value = task.class;
-            document.getElementById('inputType').value = task.type;
-            document.getElementById('inputTask').value = task.task;
+
+            // when it finishes, redirect to the task page
+            console.log("Successfully added task, sending to main page.");
+            window.location.replace("../");
     });
-    return;
-    window.location.replace("../");
 }
