@@ -1,5 +1,5 @@
 // Constants
-const serverUrl = "homeworktrack.serble.net:9898";
+const serverUrl = "homeworkserver.zaneharrison.com:9898";  // This is an alias of homeworktrack.serble.net but it is unblocked on my school's wifi
 
 // Functions
 function httpSendAsync(theUrl, verb, headers, body, callback) {
