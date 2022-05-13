@@ -1,5 +1,5 @@
 // Constants
-const serverUrl = "homeworkserver.zaneharrison.com:9898";  // This is an alias of homeworktrack.serble.net but it is unblocked on my school's wifi
+const serverUrl = "https://homeworkserver.zaneharrison.com:9897";  // This is an alias of homeworktrack.serble.net but it is unblocked on my school's wifi
 
 // Functions
 function httpSendAsync(theUrl, verb, headers, body, callback) {
@@ -10,7 +10,7 @@ function httpSendAsync(theUrl, verb, headers, body, callback) {
     }
     callback(xmlHttp.responseText, xmlHttp.status);
   }
-  xmlHttp.open(verb, "http://" + theUrl, true);
+  xmlHttp.open(verb, theUrl, true);
   headers.forEach((item, i) => {
     xmlHttp.setRequestHeader(item.split(":")[0],item.split(":")[1]);
   });
